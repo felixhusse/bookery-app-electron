@@ -1,9 +1,18 @@
-<link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
 <dom-module id="book-record">
 <template>
-  <paper-material elevation="1">
-    <span>{{book.title}}-{{book.author}}</span>
-  </paper-material>
+  <style is="custom-style">
+    paper-card {
+      width: 100%;
+      margin-bottom: 16px;
+    };
+  </style>
+  <paper-card heading={{book.title}} elevation=3>
+    <div class="card-content">
+      <i>{{book.author}}</i>
+    </div>
+
+  </paper-card>
 </template>
 <script>
   Polymer({

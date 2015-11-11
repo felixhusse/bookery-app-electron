@@ -1,28 +1,46 @@
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+
 <dom-module id="book-data">
+  <template>
+    <iron-ajax auto url="http://jboss.fatalix.de/solr-4.10.4/bookery/select/?q=*%3A*&fl=id%2Cauthor%2Ctitle%2Cdescription%2Ccover&wt=json&indent=true&start=0&rows=20"
+            handle-as="json"
+            on-response="booksLoaded"
+            verbose=true></iron-ajax>
+  </template>
   <script>
     Polymer({
       is: 'book-data',
       properties: {
         books: {
           notify: true,
-          value: function() {
-            return[{
-                title:'Discworld',
-                author:'Terry Pratchett'
-            },
-            {
-                title:'Per Anhalter durch die Galaxis',
-                author:'Douglas Adams'
-            },
-            {
-                title:'Der kleine Hobbit',
-                author:'J.R.R Tolkin'
-            }
-
-          ];
+          type: Array
+        },
+        numOfBooks: 0
+      },
+      attached: function () {
+          this.books = [{
+              title:'Discworld',
+              author:'Terry Pratchett',
+              description:'test'
+          },
+          {
+              title:'Per Anhalter durch die Galaxis',
+              author:'Douglas Adams',
+              description:'test'
+          },
+          {
+              title:'Der kleine Hobbit',
+              author:'J.R.R Tolkin',
+              description:'test'
           }
-        }
+        ];
+        this.numOfBooks = 3;
+      },
+      booksLoaded: function (data) {
+          this.books = data.docs;
+          this.numOfBooks = data.numFound;
       }
+
     });
   </script>
 </dom-module>
