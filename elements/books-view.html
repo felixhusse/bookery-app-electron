@@ -1,0 +1,26 @@
+<link rel="import" href="book-list.html">
+
+<dom-module id="books-view">
+<template>
+  <paper-header-panel class="flex">
+    <paper-toolbar>
+      <div>Bookerio</div>
+      <span class="flex"></span>
+      <paper-icon-button icon="search"></paper-button-icon>
+    </paper-toolbar>
+
+  </paper-header-panel>
+  <book-list books="{{books}}"></book-list>
+</template>
+
+<script>
+  Polymer({
+    is: "books-view",
+    properties: {
+      books: Array
+    },
+    searchBooks: function() {}
+
+  });
+</script>
+</dom-module>

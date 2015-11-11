@@ -1,0 +1,28 @@
+<dom-module id="book-data">
+  <script>
+    Polymer({
+      is: 'book-data',
+      properties: {
+        books: {
+          notify: true,
+          value: function() {
+            return[{
+                title:'Discworld',
+                author:'Terry Pratchett'
+            },
+            {
+                title:'Per Anhalter durch die Galaxis',
+                author:'Douglas Adams'
+            },
+            {
+                title:'Der kleine Hobbit',
+                author:'J.R.R Tolkin'
+            }
+
+          ];
+          }
+        }
+      }
+    });
+  </script>
+</dom-module>
