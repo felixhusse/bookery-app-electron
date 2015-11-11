@@ -1,0 +1,19 @@
+<link rel="import" href="book-record.html">
+
+<dom-module id="book-list">
+  <template>
+    <template is="dom-repeat"
+              items="{{books}}"
+              as="book">
+      <book-record book="{{book}}"></book-record>
+    </template>
+  </template>
+  <script>
+    Polymer({
+      is: 'book-list',
+      properties: {
+        books: Array
+      }
+    });
+  </script>
+</dom-module>

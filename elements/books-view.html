@@ -1,0 +1,19 @@
+<link rel="import" href="book-list.html">
+
+<dom-module id="books-view">
+<template>
+  <div class="content">
+    <book-list books="{{books}}"></book-list>
+  </div>
+</template>
+<script>
+  Polymer({
+    is: "books-view",
+    properties: {
+      books: Array
+    },
+    searchBooks: function() {}
+
+  });
+</script>
+</dom-module>

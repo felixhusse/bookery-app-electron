@@ -3,22 +3,24 @@
   <head>
     <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
 
-    <!-- 2. Use an HTML Import to bring in some elements. -->
-    <link rel="import" href="bower_components/paper-header-panel/paper-header-panel.html">
-    <link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
-    <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+    <!-- will be replaced with elements/elements.vulcanized.html -->
+    <link rel="import" href="elements/elements.html">
+    <!-- endreplace-->
 
-    <link rel="import" href="bower_components/paper-button/paper-button.html">
-    <link rel="import" href="bower_components/paper-input/paper-input.html">
-    <link rel="import" href="bower_components/paper-card/paper-card.html">
-
-    <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
-    <link rel="import" href="bower_components/iron-icons/iron-icons.html">
-    <link rel="import" href="bower_components/paper-drawer-panel/paper-drawer-panel.html">
 
     <title>Bookery App</title>
   </head>
-  <body class="fullbleed vertical layout">
+  <body class="fullbleed layout vertical">
+    <template is="dom-bind">
+      <book-data books="{{books}}"></book-data>
+      <books-view books={{books}}></books-view>
+    </template>
+    <paper-toolbar>
+      <div>Books<div>
+      <paper-icon-button icon="search"></paper-icon-button>
+    </paper-toolbar>
+    <books-view></books-view>
+    <!--
   <paper-drawer-panel class="flex">
     <paper-header-panel drawer>
       <paper-toolbar>
@@ -35,5 +37,6 @@
       <paper-button raised>Toggle-able button</paper-button>
     </paper-header-panel>
   </paper-drawer-panel>
+-->
   </body>
 </html>
