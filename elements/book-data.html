@@ -15,7 +15,8 @@
         },
         numOfBooks: {
           notify: true,
-          type: Object
+          type: Number,
+          value: 0
         }
       },
       attached: function () {
@@ -24,7 +25,6 @@
             var data = JSON.parse(arg);
             _THIS.books = data.response.docs;
             _THIS.numOfBooks = data.response.numFound;
-
           });
           ipc.send('retrieveBooks', '0');
       }
