@@ -26,6 +26,7 @@
     "paper-input": "PolymerElements/paper-input#~1.0.18",
     "paper-card": "PolymerElements/paper-card#~1.0.7",
     "paper-material": "PolymerElements/paper-material#~1.0.3",
-    "iron-ajax": "PolymerElements/iron-ajax#~1.0.9"
+    "iron-ajax": "PolymerElements/iron-ajax#~1.0.9",
+    "iron-image": "PolymerElements/iron-image#~1.0.3"
   }
 }

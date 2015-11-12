@@ -1,4 +1,5 @@
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
 <dom-module id="book-record">
 <template>
   <style is="custom-style">
@@ -7,9 +8,12 @@
       margin-bottom: 16px;
     };
   </style>
-  <paper-card heading={{book.title}} elevation=3>
+  <paper-card heading={{book.title}} elevation=2>
     <div class="card-content">
-      <i>{{book.author}}</i>
+      <div class="layout horizontal">
+        <div><iron-image style="width:200px; height:200px;" sizing="contain" src="data:image/png;base64,{{book.cover}}"></iron-image></div>
+        <div><i>{{book.author}}</i><br>{{book.description}}</div>
+      </div>
     </div>
 
   </paper-card>

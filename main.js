@@ -1,5 +1,7 @@
 var app = require('app');  // Module to control application life.
 var BrowserWindow = require('browser-window');  // Module to create native browser window.
+var ipc = require('ipc');
+var http = require('http');
 
 // Report crashes to our server.
 require('crash-reporter').start();
@@ -27,8 +29,8 @@ app.on('ready', function() {
   mainWindow.loadUrl('file://' + __dirname + '/index.html');
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
-  
+  //mainWindow.webContents.openDevTools();
+
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {
     // Dereference the window object, usually you would store windows
@@ -36,4 +38,26 @@ app.on('ready', function() {
     // when you should delete the corresponding element.
     mainWindow = null;
   });
+});
+
+ipc.on('retrieveBooks', function(event,arg) {
+  var options = {
+    host: 'jboss.fatalix.de',
+    path: '/solr-4.10.4/bookery/select/?q=*%3A*&fl=id%2Cauthor%2Ctitle%2Cdescription%2Ccover&wt=json&start=0&rows=20'
+  };
+  callback = function(response) {
+    var str = '';
+
+    //another chunk of data has been recieved, so append it to `str`
+    response.on('data', function (chunk) {
+      str += chunk;
+    });
+
+    //the whole response has been recieved, so we just print it out here
+    response.on('end', function () {
+      event.sender.send('retrieveBooks-reply', str);
+    });
+  }
+  http.request(options, callback).end();
+
 });
