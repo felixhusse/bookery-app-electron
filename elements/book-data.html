@@ -13,13 +13,15 @@
           notify: true,
           type: Array
         },
-        numOfBooks: 0
+        numOfBooks: {
+          notify: true,
+          type: Object
+        }
       },
       attached: function () {
           var _THIS = this;
           ipc.on('retrieveBooks-reply', function(arg) {
             var data = JSON.parse(arg);
-            console.log(data);
             _THIS.books = data.response.docs;
             _THIS.numOfBooks = data.response.numFound;
 

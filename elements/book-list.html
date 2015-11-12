@@ -1,18 +1,23 @@
 <link rel="import" href="book-record.html">
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
 
 <dom-module id="book-list">
   <template>
+    <div>TOTAL: {{numOfBooks}}</div>
+    <paper-listbox>
     <template is="dom-repeat"
               items="{{books}}"
               as="book">
-      <book-record book="{{book}}"></book-record>
+      <paper-item><book-record book="{{book}}"></book-record></paper-item>
     </template>
+    </paper-listbox>
   </template>
   <script>
     Polymer({
       is: 'book-list',
       properties: {
-        books: Array
+        books: Array,
+        numOfBooks: Object
       }
     });
   </script>

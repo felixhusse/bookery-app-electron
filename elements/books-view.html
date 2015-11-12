@@ -10,14 +10,15 @@
     </paper-toolbar>
 
   </paper-header-panel>
-  <book-list books="{{books}}"></book-list>
+  <book-list books="{{books}}" numOfBooks="{{numOfBooks}}"></book-list>
 </template>
 
 <script>
   Polymer({
     is: "books-view",
     properties: {
-      books: Array
+      books: Array,
+      numOfBooks: Object
     },
     searchBooks: function() {}
 
